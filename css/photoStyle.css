@@ -1,0 +1,107 @@
+/* Sidebar styles */
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Hide sidebar off-screen initially */
+    background-color: #000000;
+    color: #fff;
+    overflow-x: hidden;
+    transition: left 0.3s; /* Smooth transition for sidebar */
+    padding-top: 60px;
+    z-index: 1000; /* Ensure the sidebar is above other content */
+}
+
+/* Sidebar when active */
+.sidebar.active {
+    left: 0; /* Slide the sidebar into view */
+}
+
+/* Sidebar links */
+.sidebar a {
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+/* Sidebar toggle button */
+.sidebar-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 1100; /* Ensure the button is above the sidebar */
+    transition: 0.3s;
+}
+
+.sidebar-toggle:hover {
+    background-color: #cc5200;
+}
+
+/* Main content styles */
+.main-content {
+    margin-left: 0; /* No need to adjust margin */
+    transition: margin-left 0.3s ease; /* Smooth transition effect */
+    padding: 20px;
+}
+
+/* Gallery container */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+}
+
+/* Individual gallery items */
+.gallery-item {
+    flex: 1 0 21%; /* Flexbox to maintain consistent size */
+    max-width: 200px; /* Set a maximum width */
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .gallery-item {
+        flex: 1 0 31%;
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-item {
+        flex: 1 0 48%;
+    }
+}
+
+@media (max-width: 400px) {
+    .gallery-item {
+        flex: 1 0 100%;
+    }
+}
+
+/* Sidebar active state - No need to shift main content */
+.sidebar.active + .main-content {
+    margin-left: 0; /* Keep content at the same position */
+}
